@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ "$#" -lt 3 ]; then
+        echo "Использование: УПШСВФ-15 качество префикс суффикс"
+        exit
+fi
+SCNNRDEV=$(scanimage -L | grep libusb | sed "s/^.*\`//;s/'.*$//")
+if [ -z "$SCNNRDEV" ]; then
+	echo "Ошибка: сканер на УПШ не найден"
+	if [ "$4" == "гип" ]; then
+		zenity --error --text="Ошибка: сканер на УПШ не найден" &
+	fi
+	exit
+fi
+TMPSCAN=$(mktemp  --suffix .ppm)
+scanimage -d $SCNNRDEV > $TMPSCAN
+convert -quality $1 $TMPSCAN $2$(date +%s)$3
+rm $TMPSCAN

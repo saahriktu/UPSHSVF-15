@@ -1,0 +1,14 @@
+#!/usr/bin/wish
+wm title . "УПШСВФ-15 ГИП"
+set iq0 "50"
+set fpx "scan"
+set fsx ".jpg"
+label .lbl1 -text Качество:
+scale .sld1 -orient horizontal -from 0 -to 100 -length 150 \
+ -variable iq0 -showvalue 0
+label .lbl2 -text Префикс:
+entry .txt1 -textvar fpx
+label .lbl3 -text Суффикс:
+entry .txt2 -textvar fsx
+button .btn0 -text Сканировать -command {exec УПШСВФ-15 $iq0 $fpx $fsx &}
+pack .lbl1 .sld1 .lbl2 .txt1 .lbl3 .txt2 .btn0 -side top
