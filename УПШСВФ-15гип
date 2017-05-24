@@ -10,5 +10,5 @@ label .lbl2 -text Префикс:
 entry .txt1 -textvar fpx
 label .lbl3 -text Суффикс:
 entry .txt2 -textvar fsx
-button .btn0 -text Сканировать -command {exec УПШСВФ-15 $iq0 $fpx $fsx &}
+button .btn0 -text Сканировать -command {exec УПШСВФ-15 $iq0 $fpx $fsx гип &}
 pack .lbl1 .sld1 .lbl2 .txt1 .lbl3 .txt2 .btn0 -side top
